@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import logo from './svgs/logo.svg';
+import chevronLeft from './svgs/chevron_left.svg';
+import chevronRight from './svgs/chevron_right.svg';
 import './PokemonApp.scss';
 
 import PokemonCard from './components/PokemonCard';
 import PokemonForm from './components/PokemonForm';
 
 function PokemonApp() {
+  const totalPokemon = 898;
+
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
   const [pokemon, setPokemon] = useState(null);
+  const [pokemonId, setPokemonId] = useState(null);
   const [pokemonName, setPokemonName] = useState(null);
 
   useEffect(() => {
@@ -18,6 +23,13 @@ function PokemonApp() {
     setStatus('pending');
     getPokemon(pokemonName);
   }, [pokemonName]);
+
+  useEffect(() => {
+    if (!pokemonId) {
+      return;
+    }
+    getPokemon(pokemonId);
+  }, [pokemonId]);
 
   const getPokemon = (query) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
@@ -40,6 +52,9 @@ function PokemonApp() {
       });
   };
 
+  const getPrevPokemon = () => setPokemonId(pokemon.id - 1);
+  const getNextPokemon = () => setPokemonId(pokemon.id + 1);
+
   const handleToUpdate = (pokemonName) => setPokemonName(pokemonName);
 
   return (
@@ -60,6 +75,22 @@ function PokemonApp() {
         {status === 'resolved' && pokemon && (
           <div className="PokemonApp__CardWrapper">
             <PokemonCard {...pokemon} />
+            {pokemon.id > 1 && (
+              <button
+                className="PokemonApp__Button PokemonApp__Button--prev"
+                onClick={getPrevPokemon}
+              >
+                <img src={chevronLeft} alt="Previous" />
+              </button>
+            )}
+            {pokemon.id < totalPokemon && (
+              <button
+                className="PokemonApp__Button PokemonApp__Button--next"
+                onClick={getNextPokemon}
+              >
+                <img src={chevronRight} alt="Next" />
+              </button>
+            )}
           </div>
         )}
       </div>
