@@ -1,4 +1,5 @@
 import React from 'react';
+import './PokemonCard.scss';
 
 function PokemonCard({ id, name, sprites, types }) {
   return (
