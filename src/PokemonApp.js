@@ -55,6 +55,9 @@ function PokemonApp() {
   const getPrevPokemon = () => setPokemonId(pokemon.id - 1);
   const getNextPokemon = () => setPokemonId(pokemon.id + 1);
 
+  const getRandomPokemon = () =>
+    setPokemonId(Math.floor(Math.random() * totalPokemon + 1));
+
   const handleToUpdate = (pokemonName) => setPokemonName(pokemonName);
 
   return (
