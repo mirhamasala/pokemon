@@ -1,9 +1,15 @@
 import React from 'react';
 import './PokemonForm.scss';
 
-function PokemonForm() {
+function PokemonForm({ handleToUpdate }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleToUpdate(event.target.elements.pokemonName.value.toLowerCase());
+    event.target.elements.pokemonName.value = '';
+  };
+
   return (
-    <form className="PokemonForm">
+    <form onSubmit={handleSubmit} className="PokemonForm">
       <input
         aria-label="pokemon name"
         id="pokemonName"
