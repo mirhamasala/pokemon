@@ -1,0 +1,55 @@
+/*------------------------------------*\
+  #POKEMON-FORM
+\*------------------------------------*/
+
+@import '../styles/_index.scss';
+
+.PokemonForm {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+}
+
+.PokemonForm__Input {
+  flex-grow: 2;
+  display: inline-flex;
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: white;
+  background-color: $gray;
+  border-top: 1px solid $brand-primary;
+  border-right: none;
+  border-bottom: 1px solid $brand-primary;
+  border-left: 1px solid $brand-primary;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  &:hover,
+  &:focus {
+    background-color: $gray-lighter;
+    outline: none;
+  }
+  &:focus {
+    border: 1px solid $brand-secondary;
+    border-right: none;
+  }
+}
+
+.PokemonForm__Button {
+  display: inline-flex;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: $gray;
+  border: 1px solid $brand-primary;
+  border-radius: 0 1rem 1rem 0;
+  appearance: none;
+  &:hover,
+  &:focus {
+    background-color: $gray-lighter;
+    outline: none;
+  }
+  &:focus {
+    border: 1px solid $brand-secondary;
+  }
+}

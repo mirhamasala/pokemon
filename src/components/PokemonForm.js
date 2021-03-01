@@ -1,4 +1,5 @@
 import React from 'react';
+import './PokemonForm.scss';
 
 function PokemonForm() {
   return (
