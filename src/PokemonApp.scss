@@ -34,6 +34,9 @@
   margin-top: 1rem;
   border: 1px solid $brand-secondary;
   border-radius: 1rem;
+  &--Error {
+    background-color: $error;
+  }
 }
 
 .PokemonApp__CardWrapper {

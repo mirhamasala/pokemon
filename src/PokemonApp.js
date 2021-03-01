@@ -47,7 +47,11 @@ function PokemonApp() {
       <div className="PokemonApp__Wrapper">
         <PokemonForm handleToUpdate={handleToUpdate} />
         {status !== 'resolved' && (
-          <div className="PokemonApp__BlankCard">
+          <div
+            className={`PokemonApp__BlankCard ${
+              status === 'rejected' ? 'PokemonApp__BlankCard--Error' : ''
+            }`}
+          >
             {status === 'pending' && <span>Searching...</span>}
             {status === 'rejected' && <span>{error}</span>}
             <img src={logo} className="PokemonApp__Logo" alt="logo" />
