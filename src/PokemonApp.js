@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './PokemonApp.scss';
 
+import PokemonCard from './components/PokemonCard';
 import PokemonForm from './components/PokemonForm';
 
 function PokemonApp() {
@@ -49,7 +50,7 @@ function PokemonApp() {
           {status === 'rejected' && <span>{error}</span>}
         </div>
       )}
-      {status === 'resolved' && pokemon && <div>{pokemon.name}</div>}
+      {status === 'resolved' && pokemon && <PokemonCard {...pokemon} />}
     </div>
   );
 }
