@@ -52,6 +52,8 @@ function PokemonApp() {
       });
   };
 
+  const getPrevPokemon = () => setPokemonId(pokemon.id - 1);
+
   const handleToUpdate = (pokemonName) => setPokemonName(pokemonName);
 
   return (
@@ -73,7 +75,10 @@ function PokemonApp() {
           <div className="PokemonApp__CardWrapper">
             <PokemonCard {...pokemon} />
             {pokemon.id > 1 && (
-              <button className="PokemonApp__Button PokemonApp__Button--prev">
+              <button
+                className="PokemonApp__Button PokemonApp__Button--prev"
+                onClick={getPrevPokemon}
+              >
                 <img src={chevronLeft} alt="Previous" />
               </button>
             )}
