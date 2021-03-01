@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import logo from './svgs/logo.svg';
+import chevronLeft from './svgs/chevron_left.svg';
+import chevronRight from './svgs/chevron_right.svg';
 import './PokemonApp.scss';
 
 import PokemonCard from './components/PokemonCard';
 import PokemonForm from './components/PokemonForm';
 
 function PokemonApp() {
+  const totalPokemon = 898;
+
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
   const [pokemon, setPokemon] = useState(null);
@@ -68,6 +72,16 @@ function PokemonApp() {
         {status === 'resolved' && pokemon && (
           <div className="PokemonApp__CardWrapper">
             <PokemonCard {...pokemon} />
+            {pokemon.id > 1 && (
+              <button className="PokemonApp__Button PokemonApp__Button--prev">
+                <img src={chevronLeft} alt="Previous" />
+              </button>
+            )}
+            {pokemon.id < totalPokemon && (
+              <button className="PokemonApp__Button PokemonApp__Button--next">
+                <img src={chevronRight} alt="Next" />
+              </button>
+            )}
           </div>
         )}
       </div>

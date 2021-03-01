@@ -45,3 +45,37 @@
   border: 1px solid $brand-secondary;
   border-radius: 1rem;
 }
+
+.PokemonApp__Button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1rem;
+  border: 2px solid $brand-primary;
+  border-radius: 50%;
+  background-color: $gray;
+  color: $white;
+  cursor: pointer;
+  appearance: none;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+  &:focus {
+    width: 3.25rem;
+    height: 3.25rem;
+    border: 2px solid $brand-secondary;
+  }
+  &--prev {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+  &--next {
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+}
