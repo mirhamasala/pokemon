@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import logo from './svgs/logo.svg';
 import './PokemonApp.scss';
 
 import PokemonCard from './components/PokemonCard';
@@ -46,9 +47,10 @@ function PokemonApp() {
       <div className="PokemonApp__Wrapper">
         <PokemonForm handleToUpdate={handleToUpdate} />
         {status !== 'resolved' && (
-          <div>
+          <div className="PokemonApp__BlankCard">
             {status === 'pending' && <span>Searching...</span>}
             {status === 'rejected' && <span>{error}</span>}
+            <img src={logo} className="PokemonApp__Logo" alt="logo" />
           </div>
         )}
         {status === 'resolved' && pokemon && (

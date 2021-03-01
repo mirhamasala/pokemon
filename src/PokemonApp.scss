@@ -20,6 +20,22 @@
   margin: 0 auto;
 }
 
+.PokemonApp__BlankCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  width: 20rem;
+  padding: 2rem;
+  font-weight: 600;
+  color: $black;
+  background-color: $brand-secondary;
+  margin-top: 1rem;
+  border: 1px solid $brand-secondary;
+  border-radius: 1rem;
+}
+
 .PokemonApp__CardWrapper {
   position: relative;
   margin-top: 1rem;
