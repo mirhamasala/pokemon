@@ -78,4 +78,8 @@
     right: 0;
     transform: translate(50%, -50%);
   }
+  &--random {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }

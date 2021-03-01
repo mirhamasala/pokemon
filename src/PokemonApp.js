@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './svgs/logo.svg';
 import chevronLeft from './svgs/chevron_left.svg';
 import chevronRight from './svgs/chevron_right.svg';
+import pokeball from './svgs/pokeball.svg';
 import './PokemonApp.scss';
 
 import PokemonCard from './components/PokemonCard';
@@ -55,6 +56,9 @@ function PokemonApp() {
   const getPrevPokemon = () => setPokemonId(pokemon.id - 1);
   const getNextPokemon = () => setPokemonId(pokemon.id + 1);
 
+  const getRandomPokemon = () =>
+    setPokemonId(Math.floor(Math.random() * totalPokemon + 1));
+
   const handleToUpdate = (pokemonName) => setPokemonName(pokemonName);
 
   return (
@@ -93,6 +97,12 @@ function PokemonApp() {
             )}
           </div>
         )}
+        <button
+          className="PokemonApp__Button PokemonApp__Button--random"
+          onClick={getRandomPokemon}
+        >
+          <img src={pokeball} alt="Random pokémon" />
+        </button>
       </div>
     </div>
   );
