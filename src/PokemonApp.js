@@ -53,6 +53,7 @@ function PokemonApp() {
   };
 
   const getPrevPokemon = () => setPokemonId(pokemon.id - 1);
+  const getNextPokemon = () => setPokemonId(pokemon.id + 1);
 
   const handleToUpdate = (pokemonName) => setPokemonName(pokemonName);
 
@@ -83,7 +84,10 @@ function PokemonApp() {
               </button>
             )}
             {pokemon.id < totalPokemon && (
-              <button className="PokemonApp__Button PokemonApp__Button--next">
+              <button
+                className="PokemonApp__Button PokemonApp__Button--next"
+                onClick={getNextPokemon}
+              >
                 <img src={chevronRight} alt="Next" />
               </button>
             )}
