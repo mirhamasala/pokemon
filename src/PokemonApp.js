@@ -5,6 +5,7 @@ import PokemonForm from './components/PokemonForm';
 
 function PokemonApp() {
   const [status, setStatus] = useState('idle');
+  const [error, setError] = useState(null);
   const [pokemon, setPokemon] = useState(null);
   const [pokemonName, setPokemonName] = useState(null);
 
@@ -18,7 +19,19 @@ function PokemonApp() {
 
   const getPokemon = (query) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else if (response.status === 404) {
+          setStatus('rejected');
+          setError(`Pokémon doesn't exist.`);
+          return Promise.reject(response.status);
+        } else {
+          setStatus('rejected');
+          setError(`Oops. Try again later.`);
+          return Promise.reject(response.status);
+        }
+      })
       .then((pokemonData) => {
         setStatus('resolved');
         setPokemon(pokemonData);
@@ -30,6 +43,12 @@ function PokemonApp() {
   return (
     <div className="PokemonApp">
       <PokemonForm handleToUpdate={handleToUpdate} />
+      {status !== 'resolved' && (
+        <div>
+          {status === 'pending' && <span>Searching...</span>}
+          {status === 'rejected' && <span>{error}</span>}
+        </div>
+      )}
       {status === 'resolved' && pokemon && <div>{pokemon.name}</div>}
     </div>
   );
