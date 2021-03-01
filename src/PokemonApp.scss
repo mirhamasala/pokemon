@@ -1,0 +1,15 @@
+/*------------------------------------*\
+  #POKEMON-APP
+\*------------------------------------*/
+
+@import 'styles/_index.scss';
+
+.PokemonApp {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  background-color: $black;
+}
