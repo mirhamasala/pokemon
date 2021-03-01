@@ -5,6 +5,7 @@ import chevronRight from './svgs/chevron_right.svg';
 import pokeball from './svgs/pokeball.svg';
 import './PokemonApp.scss';
 
+import { fetchPokemon } from './services/fetchPokemon';
 import PokemonCard from './components/PokemonCard';
 import PokemonForm from './components/PokemonForm';
 
@@ -33,24 +34,22 @@ function PokemonApp() {
   }, [pokemonId]);
 
   const getPokemon = (query) => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else if (response.status === 404) {
-          setStatus('rejected');
-          setError(`Pokémon doesn't exist.`);
-          return Promise.reject(response.status);
-        } else {
-          setStatus('rejected');
-          setError(`Oops. Try again later.`);
-          return Promise.reject(response.status);
-        }
-      })
-      .then((pokemonData) => {
+    fetchPokemon(query).then((res) => {
+      if (!res.status) {
         setStatus('resolved');
-        setPokemon(pokemonData);
-      });
+        setPokemon(res);
+        return;
+      }
+      if (res.status === 404) {
+        setStatus('rejected');
+        setError(`Pokémon doesn't exist.`);
+        return Promise.reject(res.status);
+      } else {
+        setStatus('rejected');
+        setError(`Oops. Try again later.`);
+        return Promise.reject(res.status);
+      }
+    });
   };
 
   const getPrevPokemon = () => setPokemonId(pokemon.id - 1);
