@@ -2,6 +2,13 @@
 
 🐥 Find your spirit Pokémon.
 
+## The Challenge
+
+1. Create a page that allows a user to enter a Pokémon name;
+2. When the user submits the request, query ​[pokeapi.co​](https://pokeapi.co​) and display the given Pokémon (at least name, number, and sprite) or an error message if there's no match;
+3. Add "Previous" and "Next" buttons that switch to the previous/next Pokémon based on id number;
+4. Include an automated test that performs a search and asserts that the correct result is rendered.
+
 ## Available Scripts
 
 In the project directory, you can run:
