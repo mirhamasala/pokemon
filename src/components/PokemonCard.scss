@@ -1,0 +1,56 @@
+/*------------------------------------*\
+  #POKEMON-CARD
+\*------------------------------------*/
+
+@import '../styles/_index.scss';
+
+.PokemonCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  width: 20rem;
+  padding: 2rem;
+  background-color: transparent;
+}
+
+.PokemonCard__Image {
+  width: 100%;
+  height: 50%;
+  margin-bottom: 2rem;
+}
+
+.PokemonCard__Details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.PokemonCard__Badge {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  min-width: fit-content;
+  padding: 0.125rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: $black;
+  background-color: $brand-primary;
+  border-radius: 1rem;
+}
+
+.PokemonCard__Title {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  font-size: 2.25rem;
+  text-transform: capitalize;
+}
+
+.PokemonCard__Info {
+  display: inline;
+  span:not(:last-of-type) {
+    margin-right: 0.5rem;
+  }
+}

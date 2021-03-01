@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import logo from './svgs/logo.svg';
 import './PokemonApp.scss';
 
+import PokemonCard from './components/PokemonCard';
 import PokemonForm from './components/PokemonForm';
 
 function PokemonApp() {
@@ -42,14 +44,25 @@ function PokemonApp() {
 
   return (
     <div className="PokemonApp">
-      <PokemonForm handleToUpdate={handleToUpdate} />
-      {status !== 'resolved' && (
-        <div>
-          {status === 'pending' && <span>Searching...</span>}
-          {status === 'rejected' && <span>{error}</span>}
-        </div>
-      )}
-      {status === 'resolved' && pokemon && <div>{pokemon.name}</div>}
+      <div className="PokemonApp__Wrapper">
+        <PokemonForm handleToUpdate={handleToUpdate} />
+        {status !== 'resolved' && (
+          <div
+            className={`PokemonApp__BlankCard ${
+              status === 'rejected' ? 'PokemonApp__BlankCard--Error' : ''
+            }`}
+          >
+            {status === 'pending' && <span>Searching...</span>}
+            {status === 'rejected' && <span>{error}</span>}
+            <img src={logo} className="PokemonApp__Logo" alt="logo" />
+          </div>
+        )}
+        {status === 'resolved' && pokemon && (
+          <div className="PokemonApp__CardWrapper">
+            <PokemonCard {...pokemon} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
