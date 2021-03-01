@@ -13,3 +13,16 @@
   color: $white;
   background-color: $black;
 }
+
+.PokemonApp__Wrapper {
+  position: relative;
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+.PokemonApp__CardWrapper {
+  position: relative;
+  margin-top: 1rem;
+  border: 1px solid $brand-secondary;
+  border-radius: 1rem;
+}

@@ -43,14 +43,20 @@ function PokemonApp() {
 
   return (
     <div className="PokemonApp">
-      <PokemonForm handleToUpdate={handleToUpdate} />
-      {status !== 'resolved' && (
-        <div>
-          {status === 'pending' && <span>Searching...</span>}
-          {status === 'rejected' && <span>{error}</span>}
-        </div>
-      )}
-      {status === 'resolved' && pokemon && <PokemonCard {...pokemon} />}
+      <div className="PokemonApp__Wrapper">
+        <PokemonForm handleToUpdate={handleToUpdate} />
+        {status !== 'resolved' && (
+          <div>
+            {status === 'pending' && <span>Searching...</span>}
+            {status === 'rejected' && <span>{error}</span>}
+          </div>
+        )}
+        {status === 'resolved' && pokemon && (
+          <div className="PokemonApp__CardWrapper">
+            <PokemonCard {...pokemon} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
