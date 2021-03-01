@@ -9,6 +9,7 @@ function PokemonApp() {
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState(null);
   const [pokemon, setPokemon] = useState(null);
+  const [pokemonId, setPokemonId] = useState(null);
   const [pokemonName, setPokemonName] = useState(null);
 
   useEffect(() => {
@@ -18,6 +19,13 @@ function PokemonApp() {
     setStatus('pending');
     getPokemon(pokemonName);
   }, [pokemonName]);
+
+  useEffect(() => {
+    if (!pokemonId) {
+      return;
+    }
+    getPokemon(pokemonId);
+  }, [pokemonId]);
 
   const getPokemon = (query) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${query}`)
